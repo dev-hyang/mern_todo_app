@@ -77,8 +77,8 @@ export default class EditTodo extends Component {
                 this.state.todo_creationDate
 		};
         // console.log(updatedTodo);
-		//
-		axios.post('/todos/update/'+this.props.match.params.id, updatedTodo)
+		// Update todo item based on given id
+		axios.post('/todos/'+this.props.match.params.id, updatedTodo)
 		.then(res => console.log(res.data));
 		//redirects user back to the todo list page
 		// this.props.history.push('/');

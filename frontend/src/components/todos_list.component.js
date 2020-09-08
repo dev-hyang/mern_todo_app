@@ -39,7 +39,7 @@ export default class TodosList extends Component {
     }
     //
     deleteTodo(id){
-        axios.delete('/todos/delete/' + id)
+        axios.delete('/todos/' + id)
             .then((res) => {
                 console.log('Todo is successfully deleted!')
             }).catch(err => console.log(err));

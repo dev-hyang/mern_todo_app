@@ -13,7 +13,7 @@ export default class TodoRow extends Component {
     //
     deleteTodo(){
         console.log(this.props.obj._id);
-        axios.delete('/todos/delete/'+this.props.obj._id)
+        axios.delete('/todos/'+this.props.obj._id)
             .then((res) => {
                 console.log('Todo is successfully deleted!')
             }).catch(err => console.log(err));

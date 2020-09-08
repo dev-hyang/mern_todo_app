@@ -79,7 +79,8 @@ export default class CreateTodo extends Component{
             todo_creationDate: conv_date
 		};
 		//console.log(newTodo);
-		axios.post('/todos/add', newTodo)
+		//backend REST create api
+		axios.post('/todos/', newTodo)
             .then(res => console.log(res.data));
 
 		this.setState({

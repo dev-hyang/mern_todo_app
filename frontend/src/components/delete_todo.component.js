@@ -20,7 +20,7 @@ export default class DeleteTodo extends Component {
     //
     deleteTodo(){
         console.log(this.props.match.params.id);
-        axios.delete('/todos/delete/'+this.props.match.params.id)
+        axios.delete('/todos/'+this.props.match.params.id)
             .then((res) => {
                 console.log('Todo is successfully deleted!')
             }).catch(err => console.log(err));

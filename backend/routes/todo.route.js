@@ -15,7 +15,7 @@ router.route('/:id').get((req, res) => {
 		.catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.route('/').post((req, res) => {
 	// If all string, then can easily use new Todo(req.body), o.w.,
 	// let todo = new Todo(req.body);
 	const todo_description = req.body.todo_description;
@@ -44,7 +44,7 @@ router.route('/add').post((req, res) => {
 		});
 });
 //Use post or get or delete?
-router.route('/delete/:id').delete((req, res) => {
+router.route('/:id').delete((req, res) => {
 	Todo.findByIdAndRemove(req.params.id, (err, data) => {
 		if (!err){
 			//res.redirect('/todos/');
@@ -57,7 +57,7 @@ router.route('/delete/:id').delete((req, res) => {
 	});
 });
 //
-router.route('/update/:id').post((req, res) => {
+router.route('/:id').post((req, res) => {
 	Todo.findById(req.params.id)
 		.then(todo => {
 			if (!todo)
