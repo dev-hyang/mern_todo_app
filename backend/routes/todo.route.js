@@ -16,9 +16,22 @@ router.route('/:id').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-	// console.log(req.body);
-	let todo = new Todo(req.body);
+	// If all string, then can easily use new Todo(req.body), o.w.,
+	// let todo = new Todo(req.body);
+	const todo_description = req.body.todo_description;
+	const todo_responsible = req.body.todo_responsible;
+	const todo_priority = req.body.todo_priority;
+	const todo_completed = req.body.todo_completed;
+	console.log(req.body.todo_creationDate);
+	const todo_creationDate = Date.parse(req.body.todo_creationDate);
 	//save() method to save object into database
+	const todo = new Todo({
+		todo_description,
+		todo_responsible,
+		todo_priority,
+		todo_completed,
+		todo_creationDate
+	})
 	// console.log(todo);
 	todo.save()
 		.then(todo => {
@@ -34,7 +47,9 @@ router.route('/add').post((req, res) => {
 router.route('/delete/:id').delete((req, res) => {
 	Todo.findByIdAndRemove(req.params.id, (err, data) => {
 		if (!err){
-			res.redirect('/todos/');
+			//res.redirect('/todos/');
+			() => res.status(200).json('Todo deleted.');
+			// window.location = '/'; //internet server error 500
 		}
 		else{
 			console.log('Err when deleting todo:'+err);
@@ -52,7 +67,7 @@ router.route('/update/:id').post((req, res) => {
 				todo.todo_responsible = req.body.todo_responsible;
 				todo.todo_priority = req.body.todo_priority;
 				todo.todo_completed = req.body.todo_completed;
-
+				todo.todo_creationDate = req.body.todo_creationDate;
 				todo.save()
 					.then(todo => {
 						res.json('Todo updated!');

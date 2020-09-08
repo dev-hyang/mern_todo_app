@@ -20,5 +20,8 @@
   "homepage": "https://github.com/elon-hangyang/mern_todo_app#readme",
   "devDependencies": {
     "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }

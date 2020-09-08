@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3002;
 app.use(cors());
 app.use(bodyParser.json());
 // Make the server listening on PORT 3002
-const dbRoute = process.env.MONGODB_URI;
+const dbRoute = process.env.ATLAS_URI;
 
 mongoose.connect(dbRoute, {
 	useNewUrlParser: true
